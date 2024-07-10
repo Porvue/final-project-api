@@ -1,8 +1,10 @@
 const expresss = require("express");
 const mongoose = require("mongoose");
+const router = require("./routes/index");
 
 const app = expresss();
-app.use(expresss.json())
+app.use(expresss.json());
+app.use(router);
 const connectToDB = async () =>{
     try{
        await mongoose.connect('mongodb+srv://yerveu:BfzpyWTDSor7sX6C@cluster0.7uqwqp1.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0')
@@ -13,6 +15,7 @@ const connectToDB = async () =>{
 
 }
 connectToDB();
+
 
 const PORT = 5000;
 app.listen(PORT,() =>{
